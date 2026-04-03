@@ -1,61 +1,86 @@
 body{
   font-family:'Segoe UI',sans-serif;
   margin:0;
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  background:linear-gradient(135deg,#6366f1,#a5b4fc);
+  color:#333;
 }
 
 /* NAVBAR */
 .navbar{
   display:flex;
   justify-content:space-between;
-  background:#4f46e5;
-  color:#fff;
-  padding:15px;
+  align-items:center;
+  padding:15px 30px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+}
+
+.navbar h1{
+  color:white;
+}
+
+.navbar ul{
+  display:flex;
+  list-style:none;
+  gap:15px;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.navbar a:hover{
+  background:rgba(255,255,255,0.2);
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:60px 20px;
+  color:white;
+}
+
+.hero h2{
+  font-size:32px;
+}
+
+.hero p{
+  opacity:0.9;
 }
 
 /* CONTAINER */
 .container{
-  text-align:center;
   padding:40px;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 /* CARD */
 .card{
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
   transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-10px) scale(1.02);
 }
 
-/* INPUT */
-input{
-  padding:12px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  margin:10px;
-}
-
-/* BUTTON */
-button{
-  padding:10px 20px;
-  border:none;
-  border-radius:8px;
-  background:#4f46e5;
-  color:white;
-  cursor:pointer;
+/* LINK CARD */
+.link-card{
+  text-decoration:none;
+  color:black;
 }
 
 /* FORM */
@@ -67,19 +92,40 @@ button{
 }
 
 form{
-  background:#fff;
+  background:white;
   padding:30px;
-  border-radius:15px;
-  width:300px;
-  text-align:center;
+  border-radius:20px;
+  width:320px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#4f46e5;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 /* TIMER */
 #timer{
-  font-size:60px;
+  font-size:70px;
   text-align:center;
   margin-top:80px;
-  color:#4f46e5;
+  color:white;
 }
 
 /* ANIMATION */
