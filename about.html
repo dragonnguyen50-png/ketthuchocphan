@@ -3,85 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giải thích Lý thuyết - Đề thi Kết thúc HP</title>
+    <title>Thông tin Sinh viên - Le Trung Nguyen</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* CSS bổ sung để trang lý thuyết dễ đọc hơn */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; }
-        header { background: #2c3e50; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
-        .section { background: #f9f9f9; padding: 20px; border-left: 5px solid #3498db; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #2980b9; margin-top: 0; }
-        h3 { color: #e67e22; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-family: 'Courier New', Courier, monospace; color: #c7254e; }
-        .nav-menu { margin-bottom: 20px; text-align: center; }
-        .nav-menu a { margin: 0 10px; text-decoration: none; color: #3498db; font-weight: bold; }
-        .nav-menu a:hover { color: #2c3e50; }
+        /* CSS bổ sung dành riêng cho trang About */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Menu điều hướng (giả định) */
+        .navbar {
+            width: 100%;
+            max-width: 800px;
+            background: #2c3e50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .navbar a:hover { color: #3498db; }
+
+        /* Container chính */
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Phần ảnh đại diện */
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giúp ảnh không bị méo */
+        }
+
+        /* Phần chữ */
+        h1.student-name {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        p.student-id {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin: 0 0 20px 0;
+            background: #ecf0f1;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .info-section {
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .info-section h2 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .info-section p {
+            color: #34495e;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+
+        /* Style cho Link Deploy */
+        .deploy-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            word-break: break-all; /* Tránh tràn link dài trên mobile */
+        }
+
+        .deploy-link:hover {
+            background-color: #2980b9;
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>GIẢI THÍCH LOGIC TƯ DUY</h1>
-        <p>Học phần: Lập trình Web - Đề số 1</p>
-    </header>
-
-    <div class="nav-menu">
-        <a href="index.html">Trang chủ</a> |
-        <a href="baitap01.html">Bài 1</a> |
-        <a href="baitap02.html">Bài 2</a> |
-        <a href="baitap03.html">Bài 3</a> |
+    <div class="navbar">
+        <a href="index.html">Trang chủ</a>
         <a href="about.html">Điểm danh</a>
-    </div>
+        <a href="lythuyet.html">Lý thuyết</a>
+        </div>
 
-    <div class="section">
-        <h2>Câu 1: Danh sách sản phẩm & Tìm kiếm</h2>
-        <h3>Logic xử lý Input & Chống Injection:</h3>
-        <ul>
-            <li><strong>Chống XSS:</strong> Tôi sử dụng thuộc tính <code>.textContent</code> thay vì <code>.innerHTML</code> khi hiển thị tên sản phẩm và thông báo lỗi. Điều này ngăn chặn việc thực thi các thẻ script độc hại nếu người dùng cố tình nhập mã lệnh vào ô tìm kiếm.</li>
-            <li><strong>Xử lý chuỗi:</strong> Sử dụng phương thức <code>.trim()</code> để loại bỏ khoảng trắng thừa, giúp việc tìm kiếm chính xác hơn.</li>
-        </ul>
-        <h3>Tối ưu tìm kiếm:</h3>
-        <ul>
-            <li><strong>Không phân biệt hoa thường:</strong> Cả từ khóa nhập vào và dữ liệu mảng đều được chuyển về chữ thường bằng <code>.toLowerCase()</code> trước khi so sánh.</li>
-            <li><strong>Thuật toán:</strong> Sử dụng hàm <code>.filter()</code> kết hợp với <code>.includes()</code> để tìm kiếm nội dung một cách linh hoạt, cho phép tìm thấy sản phẩm ngay cả khi chỉ nhập một phần tên.</li>
-        </ul>
-    </div>
+    <div class="profile-card">
+        
+        <div class="avatar-container">
+            <img src="images/avatar.jpg" alt="Chân dung Le Trung Nguyen">
+        </div>
 
-    <div class="section">
-        <h2>Câu 2: Form Đăng ký & LocalStorage</h2>
-        <h3>Xử lý sự kiện & Validate:</h3>
-        <ul>
-            <li><strong>event.preventDefault():</strong> Được sử dụng để chặn hành động gửi form mặc định, giúp kiểm tra dữ liệu bằng JavaScript trước khi lưu trữ.</li>
-            <li><strong>Regex Validation:</strong> 
-                <ul>
-                    <li>Email được kiểm tra qua biểu thức chính quy chuẩn để đảm bảo có ký tự <code>@</code> và tên miền.</li>
-                    <li>Mật khẩu sử dụng Regex để bắt buộc ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số (Ví dụ: <code>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/</code>).</li>
-                </ul>
-            </li>
-        </ul>
-        <h3>Bảo mật dữ liệu cục bộ:</h3>
-        <ul>
-            <li><strong>Lưu trữ:</strong> Sử dụng <code>JSON.stringify()</code> để mã hóa đối tượng người dùng thành chuỗi trước khi đưa vào <code>localStorage.setItem()</code>.</li>
-            <li><strong>Tư duy bảo mật:</strong> Trong thực tế, tôi hiểu rằng LocalStorage không an toàn để lưu mật khẩu quan trọng. Bài làm này mô phỏng quy trình; trên thực tế, mật khẩu cần được Hash (mã hóa một chiều) ở phía Server.</li>
-        </ul>
-    </div>
+        <h1 class="student-name">Le Trung Nguyen</h1>
+        <p class="student-id">MSSV: 231A010036</p>
 
-    <div class="section">
-        <h2>Câu 3: Đồng hồ đếm ngược (Countdown)</h2>
-        <h3>Xử lý Interval & Memory Leak:</h3>
-        <ul>
-            <li><strong>Quản lý bộ nhớ:</strong> Tôi gán <code>setInterval</code> vào một biến. Khi thời gian đạt mức 0 hoặc khi cần thiết lập lại, hàm <code>clearInterval()</code> sẽ được gọi để hủy tiến trình chạy ngầm, tránh gây lãng phí tài nguyên CPU và lỗi tràn bộ nhớ (Memory Leak).</li>
-        </ul>
-        <h3>Tích hợp Domain/Hosting:</h3>
-        <ul>
-            <li><strong>Đồng bộ thời gian:</strong> Khi triển khai trên môi trường hosting thực tế, thời gian máy tính của người dùng (Client) có thể bị sai. Để tối ưu, logic cần lấy thời gian gốc từ Server thông qua API, sau đó tính toán khoảng chênh lệch (Offset) để đảm bảo mọi người dùng đều thấy cùng một mốc thời gian đếm ngược.</li>
-            <li><strong>Animation:</strong> Sử dụng CSS Keyframes để tạo hiệu ứng cảnh báo khi thời gian còn dưới 1 phút, giúp tăng trải nghiệm người dùng (UX).</li>
-        </ul>
-    </div>
+        <div class="info-section">
+            <h2>Giới thiệu</h2>
+            <p>Đây là website bài thi cuối kỳ môn Lập trình Web. Website bao gồm các chức năng: tìm kiếm sản phẩm, form đăng ký và đồng hồ countdown timer.</p>
+        </div>
 
-    <footer style="text-align: center; margin-top: 50px; color: #888;">
-        <p>Sinh viên thực hiện: T.Nguyên - MSSV: [Số của bạn]</p>
-    </footer>
+        <div class="info-section">
+            <h2>Link deploy (GitHub Pages)</h2>
+            <p>Dưới đây là liên kết trực tiếp đến bài làm đã deploy:</p>
+            <a href="https://dragonnguyen50-png.github.io/ketthuchocphan/" class="deploy-link" target="_blank">
+                https://dragonnguyen50-png.github.io/ketthuchocphan/
+            </a>
+        </div>
+
+    </div>
 
 </body>
 </html>
