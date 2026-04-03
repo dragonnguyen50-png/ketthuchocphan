@@ -1,62 +1,30 @@
-const products=["iPhone","Samsung","Laptop","Tai nghe","Chuột"];
+let time = 600; // 10 phút = 600 giây
 
-const productDiv=document.getElementById("products");
-if(productDiv){
-  function render(list){
-    productDiv.innerHTML=list.map(p=>`<div class='card'>${p}</div>`).join("");
-  }
-  render(products);
+const timer = document.getElementById("timer");
 
-  document.getElementById("search").addEventListener("input",e=>{
-    const value=e.target.value.toLowerCase();
-    const filtered=products.filter(p=>p.toLowerCase().includes(value));
-    if(filtered.length===0){
-      document.getElementById("error").innerText="Không tìm thấy";
-    }else{
-      document.getElementById("error").innerText="";
-    }
-    render(filtered);
-  });
-}
+if (timer) {
+  const interval = setInterval(() => {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
 
-// form
-const form=document.getElementById("form");
-if(form){
-  form.addEventListener("submit",e=>{
-    e.preventDefault();
-    const email=document.getElementById("email").value;
-    const pass=document.getElementById("password").value;
-    const agree=document.getElementById("agree").checked;
+    // format 2 số
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    const valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/.test(pass);
+    timer.innerText = `${minutes}:${seconds}`;
 
-    if(!valid||!agree){
-      document.getElementById("msg").innerText="Sai dữ liệu";
-      return;
+    // khi dưới 1 phút → đổi màu + animation
+    if (time <= 60) {
+      timer.style.color = "red";
+      timer.style.transform = "scale(1.2)";
     }
 
-    localStorage.setItem("user",JSON.stringify({email}));
-    document.getElementById("msg").innerText="Thành công";
-  });
-}
-
-// countdown
-const timer=document.getElementById("timer");
-if(timer){
-  let time=600;
-  const interval=setInterval(()=>{
-    let m=Math.floor(time/60);
-    let s=time%60;
-    timer.innerText=`${m}:${s<10?"0":""}${s}`;
-
-    if(time<=60){
-      timer.style.color="red";
-    }
-
-    if(time--<=0){
+    // hết giờ
+    if (time <= 0) {
       clearInterval(interval);
-      alert("Hết giờ");
+      alert("Hết thời gian!");
     }
-  },1000);
+
+    time--;
+  }, 1000);
 }
