@@ -1,4 +1,5 @@
-let time = 600; // 10 phút = 600 giây
+// ================= COUNTDOWN =================
+let time = 600; // 10 phút
 
 const timer = document.getElementById("timer");
 
@@ -7,13 +8,13 @@ if (timer) {
     let minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
-    // format 2 số
+    // format 2 chữ số
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
     timer.innerText = `${minutes}:${seconds}`;
 
-    // khi dưới 1 phút → đổi màu + animation
+    // dưới 1 phút → hiệu ứng
     if (time <= 60) {
       timer.style.color = "red";
       timer.style.transform = "scale(1.2)";
