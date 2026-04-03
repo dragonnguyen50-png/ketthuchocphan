@@ -3,12 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bài 3</title>
+<title>Bài 3 - Countdown</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/baitap03.css">
 </head>
 <body>
-<h2>Countdown</h2>
-<div id="timer">10:00</div>
+
+<div class="timer-container">
+  <h2>⏳ Countdown Timer</h2>
+  <div id="timer">10:00</div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3>⏰ Hết thời gian!</h3>
+    <button onclick="closeModal()">OK</button>
+  </div>
+</div>
+
 <script src="js/script.js"></script>
 </body>
 </html>
