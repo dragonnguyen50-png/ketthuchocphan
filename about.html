@@ -1,74 +1,87 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lý thuyết</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải thích Lý thuyết - Đề thi Kết thúc HP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* CSS bổ sung để trang lý thuyết dễ đọc hơn */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; }
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
+        .section { background: #f9f9f9; padding: 20px; border-left: 5px solid #3498db; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { color: #2980b9; margin-top: 0; }
+        h3 { color: #e67e22; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-family: 'Courier New', Courier, monospace; color: #c7254e; }
+        .nav-menu { margin-bottom: 20px; text-align: center; }
+        .nav-menu a { margin: 0 10px; text-decoration: none; color: #3498db; font-weight: bold; }
+        .nav-menu a:hover { color: #2c3e50; }
+    </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <h1>Lý thuyết</h1>
-</nav>
+    <header>
+        <h1>GIẢI THÍCH LOGIC TƯ DUY</h1>
+        <p>Học phần: Lập trình Web - Đề số 1</p>
+    </header>
 
-<div class="container">
-  <h2>Giải thích các bài tập</h2>
+    <div class="nav-menu">
+        <a href="index.html">Trang chủ</a> |
+        <a href="baitap01.html">Bài 1</a> |
+        <a href="baitap02.html">Bài 2</a> |
+        <a href="baitap03.html">Bài 3</a> |
+        <a href="about.html">Điểm danh</a>
+    </div>
 
-  <!-- BÀI 1 -->
-  <div class="card">
-    <h3>Bài 1: Tìm kiếm sản phẩm</h3>
-    <p>
-      - Dữ liệu sản phẩm được lưu trong một mảng JavaScript.<br>
-      - Sử dụng <b>filter()</b> để tìm kiếm sản phẩm theo tên.<br>
-      - Dùng <b>toLowerCase()</b> để không phân biệt hoa thường.<br>
-      - Nếu không có kết quả → hiển thị thông báo lỗi.
-    </p>
+    <div class="section">
+        <h2>Câu 1: Danh sách sản phẩm & Tìm kiếm</h2>
+        <h3>Logic xử lý Input & Chống Injection:</h3>
+        <ul>
+            <li><strong>Chống XSS:</strong> Tôi sử dụng thuộc tính <code>.textContent</code> thay vì <code>.innerHTML</code> khi hiển thị tên sản phẩm và thông báo lỗi. Điều này ngăn chặn việc thực thi các thẻ script độc hại nếu người dùng cố tình nhập mã lệnh vào ô tìm kiếm.</li>
+            <li><strong>Xử lý chuỗi:</strong> Sử dụng phương thức <code>.trim()</code> để loại bỏ khoảng trắng thừa, giúp việc tìm kiếm chính xác hơn.</li>
+        </ul>
+        <h3>Tối ưu tìm kiếm:</h3>
+        <ul>
+            <li><strong>Không phân biệt hoa thường:</strong> Cả từ khóa nhập vào và dữ liệu mảng đều được chuyển về chữ thường bằng <code>.toLowerCase()</code> trước khi so sánh.</li>
+            <li><strong>Thuật toán:</strong> Sử dụng hàm <code>.filter()</code> kết hợp với <code>.includes()</code> để tìm kiếm nội dung một cách linh hoạt, cho phép tìm thấy sản phẩm ngay cả khi chỉ nhập một phần tên.</li>
+        </ul>
+    </div>
 
-    <h4>Xử lý input & bảo mật:</h4>
-    <p>
-      - Dùng <b>trim()</b> để loại bỏ khoảng trắng.<br>
-      - Không dùng innerHTML với input người dùng → tránh XSS injection.<br>
-      - Chỉ hiển thị dữ liệu đã kiểm soát.
-    </p>
-  </div>
+    <div class="section">
+        <h2>Câu 2: Form Đăng ký & LocalStorage</h2>
+        <h3>Xử lý sự kiện & Validate:</h3>
+        <ul>
+            <li><strong>event.preventDefault():</strong> Được sử dụng để chặn hành động gửi form mặc định, giúp kiểm tra dữ liệu bằng JavaScript trước khi lưu trữ.</li>
+            <li><strong>Regex Validation:</strong> 
+                <ul>
+                    <li>Email được kiểm tra qua biểu thức chính quy chuẩn để đảm bảo có ký tự <code>@</code> và tên miền.</li>
+                    <li>Mật khẩu sử dụng Regex để bắt buộc ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số (Ví dụ: <code>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/</code>).</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Bảo mật dữ liệu cục bộ:</h3>
+        <ul>
+            <li><strong>Lưu trữ:</strong> Sử dụng <code>JSON.stringify()</code> để mã hóa đối tượng người dùng thành chuỗi trước khi đưa vào <code>localStorage.setItem()</code>.</li>
+            <li><strong>Tư duy bảo mật:</strong> Trong thực tế, tôi hiểu rằng LocalStorage không an toàn để lưu mật khẩu quan trọng. Bài làm này mô phỏng quy trình; trên thực tế, mật khẩu cần được Hash (mã hóa một chiều) ở phía Server.</li>
+        </ul>
+    </div>
 
-  <!-- BÀI 2 -->
-  <div class="card">
-    <h3>Bài 2: Form đăng ký</h3>
-    <p>
-      - Bắt sự kiện <b>submit</b> bằng addEventListener.<br>
-      - Dùng <b>preventDefault()</b> để chặn reload trang.<br>
-      - Validate email bằng regex.<br>
-      - Password ≥ 8 ký tự, có chữ hoa, thường và số.<br>
-    </p>
+    <div class="section">
+        <h2>Câu 3: Đồng hồ đếm ngược (Countdown)</h2>
+        <h3>Xử lý Interval & Memory Leak:</h3>
+        <ul>
+            <li><strong>Quản lý bộ nhớ:</strong> Tôi gán <code>setInterval</code> vào một biến. Khi thời gian đạt mức 0 hoặc khi cần thiết lập lại, hàm <code>clearInterval()</code> sẽ được gọi để hủy tiến trình chạy ngầm, tránh gây lãng phí tài nguyên CPU và lỗi tràn bộ nhớ (Memory Leak).</li>
+        </ul>
+        <h3>Tích hợp Domain/Hosting:</h3>
+        <ul>
+            <li><strong>Đồng bộ thời gian:</strong> Khi triển khai trên môi trường hosting thực tế, thời gian máy tính của người dùng (Client) có thể bị sai. Để tối ưu, logic cần lấy thời gian gốc từ Server thông qua API, sau đó tính toán khoảng chênh lệch (Offset) để đảm bảo mọi người dùng đều thấy cùng một mốc thời gian đếm ngược.</li>
+            <li><strong>Animation:</strong> Sử dụng CSS Keyframes để tạo hiệu ứng cảnh báo khi thời gian còn dưới 1 phút, giúp tăng trải nghiệm người dùng (UX).</li>
+        </ul>
+    </div>
 
-    <h4>Lưu dữ liệu & bảo mật:</h4>
-    <p>
-      - Lưu dữ liệu bằng <b>localStorage</b>.<br>
-      - Dùng <b>JSON.stringify()</b> để lưu object.<br>
-      - Không lưu mật khẩu → đảm bảo an toàn dữ liệu.
-    </p>
-  </div>
-
-  <!-- BÀI 3 -->
-  <div class="card">
-    <h3>Bài 3: Countdown Timer</h3>
-    <p>
-      - Dùng <b>setInterval()</b> để cập nhật mỗi giây.<br>
-      - Chuyển đổi thời gian sang định dạng MM:SS.<br>
-      - Khi dưới 1 phút → thêm animation CSS.<br>
-      - Khi hết giờ → hiển thị modal alert.
-    </p>
-
-    <h4>Tránh memory leak & deploy:</h4>
-    <p>
-      - Dùng <b>clearInterval()</b> khi hết thời gian để tránh chạy vô hạn.<br>
-      - Khi deploy thực tế → nên lấy thời gian từ server để đồng bộ chính xác.
-    </p>
-  </div>
-
-</div>
+    <footer style="text-align: center; margin-top: 50px; color: #888;">
+        <p>Sinh viên thực hiện: T.Nguyên - MSSV: [Số của bạn]</p>
+    </footer>
 
 </body>
 </html>
