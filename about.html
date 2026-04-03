@@ -2,15 +2,73 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lý thuyết</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h2>Giải thích</h2>
-<p>
-- Search: dùng toLowerCase() để không phân biệt hoa thường<br>
-- Validate: Regex kiểm tra email, password<br>
-- setInterval: clearInterval tránh memory leak
-</p>
+
+<nav class="navbar">
+  <h1>Lý thuyết</h1>
+</nav>
+
+<div class="container">
+  <h2>Giải thích các bài tập</h2>
+
+  <!-- BÀI 1 -->
+  <div class="card">
+    <h3>Bài 1: Tìm kiếm sản phẩm</h3>
+    <p>
+      - Dữ liệu sản phẩm được lưu trong một mảng JavaScript.<br>
+      - Sử dụng <b>filter()</b> để tìm kiếm sản phẩm theo tên.<br>
+      - Dùng <b>toLowerCase()</b> để không phân biệt hoa thường.<br>
+      - Nếu không có kết quả → hiển thị thông báo lỗi.
+    </p>
+
+    <h4>Xử lý input & bảo mật:</h4>
+    <p>
+      - Dùng <b>trim()</b> để loại bỏ khoảng trắng.<br>
+      - Không dùng innerHTML với input người dùng → tránh XSS injection.<br>
+      - Chỉ hiển thị dữ liệu đã kiểm soát.
+    </p>
+  </div>
+
+  <!-- BÀI 2 -->
+  <div class="card">
+    <h3>Bài 2: Form đăng ký</h3>
+    <p>
+      - Bắt sự kiện <b>submit</b> bằng addEventListener.<br>
+      - Dùng <b>preventDefault()</b> để chặn reload trang.<br>
+      - Validate email bằng regex.<br>
+      - Password ≥ 8 ký tự, có chữ hoa, thường và số.<br>
+    </p>
+
+    <h4>Lưu dữ liệu & bảo mật:</h4>
+    <p>
+      - Lưu dữ liệu bằng <b>localStorage</b>.<br>
+      - Dùng <b>JSON.stringify()</b> để lưu object.<br>
+      - Không lưu mật khẩu → đảm bảo an toàn dữ liệu.
+    </p>
+  </div>
+
+  <!-- BÀI 3 -->
+  <div class="card">
+    <h3>Bài 3: Countdown Timer</h3>
+    <p>
+      - Dùng <b>setInterval()</b> để cập nhật mỗi giây.<br>
+      - Chuyển đổi thời gian sang định dạng MM:SS.<br>
+      - Khi dưới 1 phút → thêm animation CSS.<br>
+      - Khi hết giờ → hiển thị modal alert.
+    </p>
+
+    <h4>Tránh memory leak & deploy:</h4>
+    <p>
+      - Dùng <b>clearInterval()</b> khi hết thời gian để tránh chạy vô hạn.<br>
+      - Khi deploy thực tế → nên lấy thời gian từ server để đồng bộ chính xác.
+    </p>
+  </div>
+
+</div>
+
 </body>
 </html>
