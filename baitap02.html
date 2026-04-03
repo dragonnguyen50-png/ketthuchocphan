@@ -3,19 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bài 2</title>
+<title>Bài 2 - Đăng ký</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/baitap02.css">
 </head>
 <body>
-<h2>Đăng ký</h2>
-<form id="form">
-<input type="text" id="name" placeholder="Tên" required>
-<input type="email" id="email" placeholder="Email" required>
-<input type="password" id="password" placeholder="Mật khẩu" required>
-<label><input type="checkbox" id="agree"> Đồng ý điều khoản</label>
-<button type="submit">Đăng ký</button>
-</form>
-<p id="msg"></p>
+
+<div class="form-container">
+  <form id="form">
+    <h2>Đăng ký tài khoản</h2>
+
+    <input type="text" id="name" placeholder="Họ và tên" required>
+
+    <input type="email" id="email" placeholder="Email" required>
+
+    <input type="password" id="password" placeholder="Mật khẩu" required>
+
+    <label class="checkbox">
+      <input type="checkbox" id="agree">
+      Đồng ý điều khoản
+    </label>
+
+    <button type="submit">Đăng ký</button>
+
+    <p id="msg"></p>
+  </form>
+</div>
+
 <script src="js/script.js"></script>
 </body>
 </html>
